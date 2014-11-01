@@ -79,6 +79,6 @@ end
 
 words = fetchWords()
 subject = 'Daily Tutor: ' + Time.now().strftime("%Y-%m-%d")
-body = EMAIL_TEMPLATE.sub('%BODY%', words.join("\n"))
+body = EMAIL_TEMPLATE.sub('%BODY%', words.join("\n<br />\n"))
 
 sendMail(subject, body)
