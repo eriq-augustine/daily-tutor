@@ -67,8 +67,7 @@ def fetchWords()
       }
 
       insert = 'INSERT INTO UsedIDs VALUES (' + wordID.to_s() + ')'
-      #TEST
-      # db.execute(insert)
+      db.execute(insert)
 
       # Replace a strange character they put after "see also" links with a comma and space.
       words << node.to_html.gsub(" ", ', ');
@@ -82,7 +81,4 @@ words = fetchWords()
 subject = 'Daily Tutor: ' + Time.now().strftime("%Y-%m-%d")
 body = EMAIL_TEMPLATE.sub('%BODY%', words.join("\n"))
 
-#TEST
-#puts words.join("\n")
-puts body
-#sendMail(subject, words.join("\n"))
+sendMail(subject, body)
